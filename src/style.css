@@ -9,10 +9,9 @@ body,
   border: none;
 }
 
-.text {
-  color: white;
-}
-
-#panel {
-  background-color: black;
+.container {
+  background-color: white;
+  .text {
+    color: black;
+  }
 }
