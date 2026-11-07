@@ -21,5 +21,8 @@
       "version": "12.18.0",
       "onFail": "download"
     }
+  },
+  "dependencies": {
+    "@babylonjs/lite": "^1.38.2"
   }
 }
