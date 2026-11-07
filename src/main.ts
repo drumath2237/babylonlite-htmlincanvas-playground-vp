@@ -6,7 +6,7 @@ function main() {
     return;
   }
 
-  console.log("Hi");
+  console.log("hello!");
 }
 
 main();

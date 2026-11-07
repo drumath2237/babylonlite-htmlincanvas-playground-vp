@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Launch Chrome (TypeScript)",
+    "adapter": "JavaScript",
+    "type": "pwa-chrome",
+    "request": "launch",
+    "url": "http://localhost:5173",
+    "program": "$ZED_FILE",
+    "webRoot": "${ZED_WORKTREE_ROOT}",
+    "skipFiles": ["<node_internals>/**"]
+  }
+]
