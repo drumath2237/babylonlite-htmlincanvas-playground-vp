@@ -6,15 +6,23 @@ import {
   createDefaultCamera,
   createDirectionalLight,
   createEngine,
+  createHtmlTexture,
   createSceneContext,
   createStandardMaterial,
   registerScene,
+  setStandardEmissiveTexture,
   startEngine,
+  whenHtmlTextureReady,
 } from "@babylonjs/lite";
 
 async function main() {
   const renderCanvas = document.getElementById("renderCanvas");
   if (!(renderCanvas instanceof HTMLCanvasElement)) {
+    return;
+  }
+
+  const panel = document.getElementById("panel");
+  if (!panel) {
     return;
   }
 
@@ -27,7 +35,13 @@ async function main() {
   addToScene(scene, light);
 
   const box = createBox(engine);
+
   const mat = createStandardMaterial();
+  const htmlTex = createHtmlTexture(engine, panel, {});
+  await whenHtmlTextureReady(htmlTex);
+  // mat.diffuseTexture = htmlTex;
+  setStandardEmissiveTexture(mat, htmlTex);
+  mat.disableLighting = true;
   box.material = mat;
 
   addToScene(scene, box);
