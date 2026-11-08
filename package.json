@@ -10,6 +10,9 @@
     "check": "vp check",
     "check:fix": "vp check --fix"
   },
+  "dependencies": {
+    "@babylonjs/lite": "^1.38.2"
+  },
   "devDependencies": {
     "typescript": "~7.0.2",
     "vite": "catalog:",
@@ -21,8 +24,5 @@
       "version": "12.18.0",
       "onFail": "download"
     }
-  },
-  "dependencies": {
-    "@babylonjs/lite": "^1.38.2"
   }
 }

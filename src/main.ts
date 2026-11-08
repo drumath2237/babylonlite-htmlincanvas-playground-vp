@@ -43,22 +43,17 @@ async function main() {
   const light = createDirectionalLight([1, -2, 3]);
   addToScene(scene, light);
 
-  const box = createBox(engine, {
-    size: 0.5,
-  });
-
-  onBeforeRender(scene, () => {
-    const { x, y, z } = box.rotation;
-    box.rotation.set(x + 0.01, y + 0.01, z + 0.01);
-  });
-
+  const box = createBox(engine, { size: 0.5 });
   const mat = createStandardMaterial();
   const htmlTex = createHtmlTexture(engine, container);
   await whenHtmlTextureReady(htmlTex);
   setStandardEmissiveTexture(mat, htmlTex);
   mat.disableLighting = true;
   box.material = mat;
-
+  onBeforeRender(scene, () => {
+    const { x, y, z } = box.rotation;
+    box.rotation.set(x + 0.01, y + 0.01, z + 0.01);
+  });
   addToScene(scene, box);
 
   await registerScene(scene);
@@ -78,11 +73,11 @@ function tryResolveElements() {
 
   const pText = document.getElementById("p-text");
   if (!(pText instanceof HTMLParagraphElement)) {
-    return;
+    return [false, null] as const;
   }
 
   const textInput = document.getElementById("text-input");
-  if (!(textInput instanceof HTMLInputElement)) {
+  if (!(textInput instanceof HTMLTextAreaElement)) {
     return [false, null] as const;
   }
 
