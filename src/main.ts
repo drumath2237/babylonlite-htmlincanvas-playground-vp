@@ -7,7 +7,6 @@ import {
   createDirectionalLight,
   createEngine,
   createHtmlTexture,
-  createPlane,
   createSceneContext,
   createStandardMaterial,
   isHtmlInCanvasSupported,
@@ -44,7 +43,7 @@ async function main() {
   const light = createDirectionalLight([1, -2, 3]);
   addToScene(scene, light);
 
-  const box = createPlane(engine);
+  const box = createBox(engine, { size: 0.5 });
   const mat = createStandardMaterial();
   const htmlTex = createHtmlTexture(engine, container, {
     width: 512,
