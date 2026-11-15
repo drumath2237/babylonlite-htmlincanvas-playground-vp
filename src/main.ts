@@ -7,6 +7,7 @@ import {
   createDirectionalLight,
   createEngine,
   createHtmlTexture,
+  createPlane,
   createSceneContext,
   createStandardMaterial,
   isHtmlInCanvasSupported,
@@ -43,9 +44,12 @@ async function main() {
   const light = createDirectionalLight([1, -2, 3]);
   addToScene(scene, light);
 
-  const box = createBox(engine, { size: 0.5 });
+  const box = createPlane(engine);
   const mat = createStandardMaterial();
-  const htmlTex = createHtmlTexture(engine, container);
+  const htmlTex = createHtmlTexture(engine, container, {
+    width: 512,
+    height: 512,
+  });
   await whenHtmlTextureReady(htmlTex);
   setStandardEmissiveTexture(mat, htmlTex);
   mat.disableLighting = true;
